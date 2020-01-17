@@ -1,24 +1,26 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from bs4 import BeautifulSoup
-import numpy as np
+from selenium.webdriver.chrome.options import Options
 import datetime
 import calendar
 import time
 import math
+import os
 
 def trainer ():
+
     # Get the day a week from now
     date = datetime.date.today() + datetime.timedelta(days=7)
-    # print(date)
+    print(date)
+    options = Options()
+    options.headless = True
 
     # Intialize the driver
-    driver = webdriver.Chrome() 
-    # Get website string format
+    driver = webdriver.Chrome(options=options)
     website_string = "https://webapp.library.uvic.ca/studyrooms/edit_entry.php?area=1&room=8&hour=13&minute=30&year="
     # Replace the room, year, month, day
     website_string = website_string + str(date.year) + "&month=" + str(date.month) + "&day=" + str(date.day)
-    # These customizable 
     # Room 8 - 15
     # Hour 13
     # Minute 30
@@ -46,9 +48,9 @@ def trainer ():
             password = driver.find_element_by_name("netlinkpw")
             submit_button = driver.find_element_by_xpath("//input[@type='button']")
 
-            study_group_name.send_keys("<Group name>")
-            username.send_keys("********")
-            password.send_keys("********")
+            study_group_name.send_keys(os.environ['SRGROUP'])
+            username.send_keys(os.environ['SRUSER'])
+            password.send_keys(os.environ['SRPASS'])
             driver.find_element_by_xpath("//select[@name='duration']/option[text()='2 hours']").click()
             submit_button.click()
             soup = BeautifulSoup(driver.page_source, 'html.parser')

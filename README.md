@@ -12,6 +12,6 @@
 - SSH into the newly created instance. Replace ec2-user with ubuntu. (https://aws.amazon.com/blogs/compute/new-using-amazon-ec2-instance-connect-for-ssh-access-to-your-ec2-instances/)
 - Run install script './install.sh', this will install the packages needed for the script to run, chromium-browser, selenium, bs4, chrome web driver, and pip.
 - Then open the bashrc file with 'vi .bashrc' and at the bottom add these three lines replacing the information with your credentials
-    - export SRGROUP=<study group name>
-    - export SRUSER=<netlink username>
-    - export SRPASS=<netlink password>
+    - export SRGROUP=study group name
+    - export SRUSER=netlink username
+    - export SRPASS=netlink password

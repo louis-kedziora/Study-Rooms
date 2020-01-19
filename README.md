@@ -9,5 +9,9 @@
 - Login and create an EC2 instance on AWS. THE AMI needs to be an Ubuntu Server' (https://www.guru99.com/creating-amazon-ec2-instance.html)
 - Transfer the "study-rooms.py" and the "install.sh" files to the instance:
     - scp -i path/to/key file/to/copy user@ec2-xx-xx-xxx-xxx.compute-1.amazonaws.com:path/to/destination
-- SSH into the newly created instance. (https://aws.amazon.com/blogs/compute/new-using-amazon-ec2-instance-connect-for-ssh-access-to-your-ec2-instances/)
-- 
+- SSH into the newly created instance. Replace ec2-user with ubuntu. (https://aws.amazon.com/blogs/compute/new-using-amazon-ec2-instance-connect-for-ssh-access-to-your-ec2-instances/)
+- Run install script './install.sh', this will install the packages needed for the script to run, chromium-browser, selenium, bs4, chrome web driver, and pip.
+- Then open the bashrc file with 'vi .bashrc' and at the bottom add these three lines replacing the information with your credentials
+    - export SRGROUP=<study group name>
+    - export SRUSER=<netlink username>
+    - export SRPASS=<netlink password>
